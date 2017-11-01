@@ -95,7 +95,7 @@ PLUGIN_INIT(mod_webdav)
 
 // php-7.1.10
 
-./configure --prefix=$PREFIX --host=$TARGETMACH --target=arm --with-config-file-path=$TOOLSDIR/etc --enable-pdo --with-pdo-mysql --with-sqlite3 --with-pdo-sqlite --without-pear --enable-simplexml --enable-json --disable-mbregex --enable-sockets --enable-fpm --disable-opcache --enable-libxml --enable-ftp --enable-mbstring --enable-mbregex --enable-mbregex-backtrack --with-mhash --enable-hash --enable-xml --enable-session --enable-soap --enable-tokenizer --enable-xmlreader --with-xmlrpc --enable-xmlwriter --without-xsl --enable-dom --enable-zip --with-zlib --with-pcre-regex --with-pcre-jit --with-gd --with-jpeg-dir=$PREFIX --with-png-dir=$PREFIX --with-xpm-dir=no --with-libxml-dir=$PREFIX --disable-all
+./configure --prefix=$PREFIX --host=$TARGETMACH --target=arm --with-config-file-path=$TOOLSDIR/etc --enable-pdo --with-pdo-mysql --with-sqlite3 --with-pdo-sqlite --without-pear --enable-simplexml --enable-json --disable-mbregex --enable-sockets --enable-fpm --disable-opcache --enable-libxml --enable-ftp --enable-mbstring --enable-mbregex --enable-mbregex-backtrack --with-mhash --enable-hash --enable-xml --enable-session --enable-soap --enable-tokenizer --enable-xmlreader --with-xmlrpc --enable-xmlwriter --without-xsl --enable-dom --enable-zip --with-zlib --with-pcre-regex --with-pcre-jit --with-gd --with-jpeg-dir=$PREFIX --with-png-dir=$PREFIX --with-xpm-dir=no --with-libxml-dir=$PREFIX -enable-pcntl --disable-all
 
 // ext/gd/php_gd.h
 #ifdef HAVE_GD_XPM

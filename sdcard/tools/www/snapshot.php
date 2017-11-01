@@ -2,15 +2,22 @@
 
 if(isset($_GET['rand']))
 {
-	header('Content-Type: image/jpeg');
+	$tmp = @tempnam(sys_get_temp_dir(), 'snapshot');
 
-	//$ret = 0;
+	@exec("/tmp/sd/tools/bin/snapshot '".$tmp."' 75", $res);
 
-	//passthru('/tmp/sd/tools/bin/snapshot 75', $ret);
+	if($res >= 0)
+	{
+		header('Content-Type: image/jpeg');
 
-	$ret = exec('/tmp/sd/tools/bin/snapshot > /tmp/sd/tools/tmp/snapshot.jpg');
+		@readfile($tmp);
+	}
+	else
+	{
+		header("HTTP/1.0 404 Not Found");
+	}
 
-	readfile('/tmp/sd/tools/tmp/snapshot.jpg', $ret);
+	@unlink($tmp);	
 
 	exit;
 }

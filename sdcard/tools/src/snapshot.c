@@ -24,6 +24,8 @@ int main(int argc, char* argv[])
 
 	int ch = 0;
 
+	FILE* fp = NULL;
+
 	snapshot_t snapshot;
 	char* snapshot_buf = NULL;
 	int snapshot_len = 0;
@@ -32,16 +34,16 @@ int main(int argc, char* argv[])
 	int width = 640;
 	int height = 360;
 
-	if(argc >= 2)
+	if(argc >= 3)
 	{
-		int q = atoi(argv[1]);
+		int q = atoi(argv[2]);
 
 		if(q > 0 && q <= 100) quality = q;
 	}
 
-	if(argc >= 3)
+	if(argc >= 4)
 	{
-		int w = atoi(argv[2]);
+		int w = atoi(argv[3]);
 
 		if(w >= 176 && w <= 1920)
 		{
@@ -50,9 +52,9 @@ int main(int argc, char* argv[])
 		}
 	}
 
-	if(argc >= 4)
+	if(argc >= 5)
 	{
-		int h = atoi(argv[3]);
+		int h = atoi(argv[4]);
 
 		if(h >= 144 && h <= 1080)
 		{
@@ -122,7 +124,18 @@ int main(int argc, char* argv[])
 
 	if(snapshot_len >= 0)
 	{
-	       	fwrite(snapshot_buf, 1, snapshot_len, stdout);
+		fp = fopen(argv[1], "wb");
+
+		if(fp == NULL)
+		{
+			perror("cannot open output file");
+			snapshot_len = -1;
+		}
+		else
+		{
+			fwrite(snapshot_buf, 1, snapshot_len, fp);
+			fclose(fp);
+		}
 	}
 	else
 	{
